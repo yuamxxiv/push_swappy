@@ -6,7 +6,7 @@
 /*   By: amancheg <amancheg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 19:49:50 by amancheg          #+#    #+#             */
-/*   Updated: 2026/03/28 23:25:00 by amancheg         ###   ########.fr       */
+/*   Updated: 2026/03/28 23:42:10 by amancheg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	sort_three(t_stack_node **stack)
 
 void	sort_many(t_stack_node **a, t_stack_node **b)
 {
-	pb(a, b);
+	pb(b, a);
 	pb(a, b);
 	while (stack_size(*a) > 3)
 	{

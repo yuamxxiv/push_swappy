@@ -6,7 +6,7 @@
 /*   By: amancheg <amancheg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 20:57:01 by amancheg          #+#    #+#             */
-/*   Updated: 2026/03/27 19:50:51 by amancheg         ###   ########.fr       */
+/*   Updated: 2026/03/28 23:43:40 by amancheg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	move_cheapest(t_stack_node **a, t_stack_node **b)
 		&& cheapest_node->target_node->above_median)
 	{
 		while (*a != cheapest_node && *b != cheapest_node->target_node)
-			rrr(a, b);
+			rr(a, b);
 	}
 	else if (!cheapest_node->above_median
 		&& !cheapest_node->target_node->above_median)

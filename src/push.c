@@ -6,7 +6,7 @@
 /*   By: amancheg <amancheg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 19:41:37 by amancheg          #+#    #+#             */
-/*   Updated: 2026/03/27 17:16:24 by amancheg         ###   ########.fr       */
+/*   Updated: 2026/03/28 23:42:42 by amancheg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	push(t_stack_node **dest, t_stack_node **src)
 		new_src_top->prev = NULL;
 	node_to_push->next = NULL;
 	node_to_push->prev = NULL;
-	if (!dest)
+	if (!*dest)
 	{
 		*dest = node_to_push;
 		return ;
