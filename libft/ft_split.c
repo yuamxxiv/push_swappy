@@ -6,7 +6,7 @@
 /*   By: amancheg <amancheg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 16:28:03 by amancheg          #+#    #+#             */
-/*   Updated: 2026/01/08 17:47:16 by amancheg         ###   ########.fr       */
+/*   Updated: 2026/03/27 20:02:23 by amancheg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ static char	**nuovo_array(int cp)
 {
 	char	**arrns;
 
+	arrns = NULL;
 	arrns = malloc(sizeof(char *) * (cp + 1));
 	if (!arrns)
 		return (NULL);

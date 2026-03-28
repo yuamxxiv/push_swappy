@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuam <yuam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: amancheg <amancheg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 19:49:50 by amancheg          #+#    #+#             */
-/*   Updated: 2026/03/27 12:46:34 by yuam             ###   ########.fr       */
+/*   Updated: 2026/03/28 23:25:00 by amancheg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	sort_three(t_stack_node **stack)
 	first = (*stack)->nbr;
 	second = (*stack)->next->nbr;
 	third = (*stack)->next->next->nbr;
-	
 	if (first < second && second < third)
 		return ;
 	else if (first < second && first < third)
@@ -38,19 +37,17 @@ void	sort_three(t_stack_node **stack)
 		sa(stack);
 		ra(stack);
 	}
-	
 }
 
-void	 sort_many (t_stack_node **a, t_stack_node **b)
+void	sort_many(t_stack_node **a, t_stack_node **b)
 {
 	pb(a, b);
 	pb(a, b);
-
 	while (stack_size(*a) > 3)
 	{
 		set_index(*a);
 		set_index(*b);
-		find_target(*a, *b);
+		init_target_a(*a, *b);
 		calculate_cost(*a, *b);
 		find_cheapest(*a);
 		move_cheapest(a, b);
@@ -58,9 +55,8 @@ void	 sort_many (t_stack_node **a, t_stack_node **b)
 	sort_three(a);
 	while (*b)
 	{
-		find_target(*b, *a);
+		find_target(*a, *b);
 		move_back(a, b);
 	}
 	bring_min_top(a);
 }
-

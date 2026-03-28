@@ -37,7 +37,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (ptr);
 }
 
-int main(void)
+/*int main(void)
 {
 	char *str_o = "HeHeHello";
 	char *str_s;
@@ -50,4 +50,4 @@ int main(void)
 	printf("%s\n", str_s);
 	free (str_s);
 	return (0);
-}
+}*/

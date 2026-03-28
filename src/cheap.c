@@ -3,32 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   cheap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuam <yuam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: amancheg <amancheg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 20:57:01 by amancheg          #+#    #+#             */
-/*   Updated: 2026/03/27 13:43:36 by yuam             ###   ########.fr       */
+/*   Updated: 2026/03/27 19:50:51 by amancheg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
 //cercare il nodo che ha il costo da spostare piu basso di tutti
 void	find_cheapest(t_stack_node *stack)
 {
 	t_stack_node	*current_node;
-	t_stack_node 	*cheapest_node;
+	t_stack_node	*cheapest_node;
 	int				lowest_cost;
 
 	if (!stack)
 		return ;
 	current_node = stack;
 	cheapest_node = stack;
-	lowest_cost	= (*stack)->push_cost;
-
-	while(current_node)
+	lowest_cost = (stack)->push_cost;
+	while (current_node)
 	{
-		if(current_node->push_cost < lowest_cost)
+		if (current_node->push_cost < lowest_cost)
 		{
 			lowest_cost = current_node->push_cost;
 			cheapest_node = current_node;
@@ -37,7 +35,8 @@ void	find_cheapest(t_stack_node *stack)
 	}
 	cheapest_node->cheapest = true;
 }
-void move_cheapest(t_stack_node **a, t_stack_node **b)
+
+void	move_cheapest(t_stack_node **a, t_stack_node **b)
 {
 	t_stack_node	*cheapest_node;
 
@@ -45,21 +44,22 @@ void move_cheapest(t_stack_node **a, t_stack_node **b)
 	if (cheapest_node->above_median
 		&& cheapest_node->target_node->above_median)
 	{
-		while(*a != cheapest_node && *b != cheapest_node->target_node)
+		while (*a != cheapest_node && *b != cheapest_node->target_node)
 			rrr(a, b);
 	}
 	else if (!cheapest_node->above_median
 		&& !cheapest_node->target_node->above_median)
 	{
-		while(*a != cheapest_node && *b != cheapest_node->target_node)
+		while (*a != cheapest_node && *b != cheapest_node->target_node)
 			rrr(a, b);
 	}
 	finish_rotation(a, cheapest_node, 'a');
 	finish_rotation(b, cheapest_node, 'b');
 	pb(a, b);
-	
 }
-//funzione helper di move cheapest fa girare lo stack finche il nodo desiderato non arriva in cima
+
+//funzione helper di move cheapest 
+//fa girare lo stack finche il nodo desiderato non arriva in cima
 void	finish_rotation(t_stack_node **stack, t_stack_node *top_node, char name)
 {
 	while (*stack != top_node)
@@ -80,15 +80,17 @@ void	finish_rotation(t_stack_node **stack, t_stack_node *top_node, char name)
 		}
 	}
 }
-//funzione helper di move cheapest scorre a e ritorna il nodo con cheapest == true
-t_stack_node *get_cheapest(t_stack_node *stack)
+
+//funzione helper di move cheapest 
+//scorre a e ritorna il nodo con cheapest == true
+t_stack_node	*get_cheapest(t_stack_node *stack)
 {
 	t_stack_node	*current_node;
 
 	current_node = stack;
 	while (current_node)
 	{
-		if(current_node->cheapest)
+		if (current_node->cheapest)
 			return (current_node);
 		current_node = current_node->next;
 	}

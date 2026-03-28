@@ -6,7 +6,7 @@
 /*   By: amancheg <amancheg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 19:41:37 by amancheg          #+#    #+#             */
-/*   Updated: 2026/03/26 23:41:02 by amancheg         ###   ########.fr       */
+/*   Updated: 2026/03/27 17:16:24 by amancheg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,38 +35,38 @@
 //     }
 // }
 
-static void push (t_stack_node **dest, t_stack_node **src)
+static void	push(t_stack_node **dest, t_stack_node **src)
 {
-    t_stack_node    *node_to_push;
-    t_stack_node    *new_src_top;
+	t_stack_node	*node_to_push;
+	t_stack_node	*new_src_top;
 
-    if(!src || !*src)
-        return ;
-    node_to_push = *src;
-    new_src_top = (*src) -> next;
-    *src = new_src_top;
-    if (new_src_top)
-        new_src_top->prev = NULL;
-    node_to_push->next = NULL;
-    node_to_push->prev = NULL;
-    if(!dest)
-    {
-        *dest = node_to_push;
-        return ;
-    }
-    node_to_push->next = *dest;
-    (*dest)->prev = node_to_push;
-    *dest = node_to_push;
+	if (!src || !*src)
+		return ;
+	node_to_push = *src;
+	new_src_top = (*src)->next;
+	*src = new_src_top;
+	if (new_src_top)
+		new_src_top->prev = NULL;
+	node_to_push->next = NULL;
+	node_to_push->prev = NULL;
+	if (!dest)
+	{
+		*dest = node_to_push;
+		return ;
+	}
+	node_to_push->next = *dest;
+	(*dest)->prev = node_to_push;
+	*dest = node_to_push;
 }
 
-void pa (t_stack_node **a, t_stack_node **b)
+void	pa(t_stack_node **a, t_stack_node **b)
 {
-    push(a, b);
-    write (1, "pa\n", 3);
+	push(a, b);
+	write (1, "pa\n", 3);
 }
 
-void pb (t_stack_node **b, t_stack_node **a)
+void	pb(t_stack_node **b, t_stack_node **a)
 {
-    push(b, a);
-    write (1, "pb\n", 3);
+	push(b, a);
+	write (1, "pb\n", 3);
 }

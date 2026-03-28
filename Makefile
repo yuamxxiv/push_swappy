@@ -1,13 +1,13 @@
 NAME        = push_swap
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -Iincludes -Ilibft
+CFLAGS      = -Wall -Wextra -Werror -Iincludes -Ilibft -g
 
 # Percorsi per la Libft
 LIBFT_DIR   = ./libft
 LIBFT       = $(LIBFT_DIR)/libft.a
 
 # Sorgenti di push_swap
-SRCS        = src/main.c src/parsing.c src/cheap.c src/gestione_lista.c src/push.c src/reverse_rotate.c src/rotate.c src/sort_many.c src/sorting.c src/swap.c
+SRCS        = src/main.c src/parse_input.c src/parsing.c src/cheap.c src/gestione_lista.c src/push.c src/reverse_rotate.c src/rotate.c src/sort_many.c src/sorting.c src/swap.c
 OBJS        = $(SRCS:.c=.o)
 
 all: $(NAME)
