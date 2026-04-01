@@ -6,7 +6,7 @@
 /*   By: amancheg <amancheg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 20:57:01 by amancheg          #+#    #+#             */
-/*   Updated: 2026/03/28 23:43:40 by amancheg         ###   ########.fr       */
+/*   Updated: 2026/04/01 18:57:23 by amancheg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,25 @@
 //cercare il nodo che ha il costo da spostare piu basso di tutti
 void	find_cheapest(t_stack_node *stack)
 {
-	t_stack_node	*current_node;
 	t_stack_node	*cheapest_node;
-	int				lowest_cost;
+	long				lowest_cost;
 
 	if (!stack)
 		return ;
-	current_node = stack;
-	cheapest_node = stack;
-	lowest_cost = (stack)->push_cost;
-	while (current_node)
+	cheapest_node = NULL;
+	lowest_cost = LONG_MAX;
+	while (stack)
 	{
-		if (current_node->push_cost < lowest_cost)
+		stack->cheapest = false;
+		if (stack->push_cost < lowest_cost)
 		{
-			lowest_cost = current_node->push_cost;
-			cheapest_node = current_node;
+			lowest_cost = stack->push_cost;
+			cheapest_node = stack;
 		}
-		current_node = current_node->next;
+		stack = stack->next;
 	}
-	cheapest_node->cheapest = true;
+	if (cheapest_node)
+		cheapest_node->cheapest = true;
 }
 
 void	move_cheapest(t_stack_node **a, t_stack_node **b)
@@ -55,7 +55,7 @@ void	move_cheapest(t_stack_node **a, t_stack_node **b)
 	}
 	finish_rotation(a, cheapest_node, 'a');
 	finish_rotation(b, cheapest_node, 'b');
-	pb(a, b);
+	pb(b, a);
 }
 
 //funzione helper di move cheapest 

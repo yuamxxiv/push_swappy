@@ -6,7 +6,7 @@
 /*   By: amancheg <amancheg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 20:46:49 by amancheg          #+#    #+#             */
-/*   Updated: 2026/03/28 23:31:53 by amancheg         ###   ########.fr       */
+/*   Updated: 2026/04/01 17:44:46 by amancheg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ void	calculate_cost(t_stack_node *a, t_stack_node *b)
 	len_b = stack_size(b);
 	while (a)
 	{
+		printf("Calcolo costo per nodo: %d\n", a->nbr);
+		if (a->target_node == NULL)
+		{
+			printf("ERRORE: Il nodo %d non ha un target_node\n", a->nbr);
+			return ;
+		}
 		if (a->above_median)
 			cost_a = a->index;
 		else
