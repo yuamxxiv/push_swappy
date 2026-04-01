@@ -6,7 +6,7 @@
 /*   By: amancheg <amancheg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:52:06 by amancheg          #+#    #+#             */
-/*   Updated: 2026/03/28 23:32:09 by amancheg         ###   ########.fr       */
+/*   Updated: 2026/04/01 22:50:02 by amancheg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ void			sb(t_stack_node **b);
 void			rrr(t_stack_node **a, t_stack_node **b);
 void			rr(t_stack_node **a, t_stack_node **b);
 t_stack_node	*get_cheapest(t_stack_node *stack);
-void			finish_rotation(t_stack_node **stack, t_stack_node *top_node, char name);
+void			finish_rotation(t_stack_node **stack,
+					t_stack_node *top_node, char name);
 void			find_cheapest(t_stack_node *stack);
 void			move_cheapest(t_stack_node **a, t_stack_node **b);
 t_stack_node	*find_min(t_stack_node *stack);

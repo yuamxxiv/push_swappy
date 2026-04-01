@@ -6,7 +6,7 @@
 /*   By: amancheg <amancheg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 17:13:19 by amancheg          #+#    #+#             */
-/*   Updated: 2026/03/27 20:10:24 by amancheg         ###   ########.fr       */
+/*   Updated: 2026/04/01 19:30:38 by amancheg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,21 @@ void	stack_add_back(t_stack_node **stack, t_stack_node *new_node)
 	last_node->next = new_node;
 	new_node->prev = last_node;
 	new_node->next = NULL;
+}
+
+int	stack_size(t_stack_node *stack)
+{
+	t_stack_node	*current_node;
+	int				count;
+
+	if (!stack)
+		return (0);
+	current_node = stack;
+	count = 0;
+	while (current_node)
+	{
+		count++;
+		current_node = current_node->next;
+	}
+	return (count);
 }

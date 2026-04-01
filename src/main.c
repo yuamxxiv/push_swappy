@@ -6,7 +6,7 @@
 /*   By: amancheg <amancheg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 00:22:03 by amancheg          #+#    #+#             */
-/*   Updated: 2026/03/27 17:06:52 by amancheg         ###   ########.fr       */
+/*   Updated: 2026/04/01 22:23:38 by amancheg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,39 +35,4 @@ int	main(int argc, char **argv)
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 	return (0);
-}
-
-int	is_sorted(t_stack_node *stack)
-{
-	t_stack_node	*current_node;
-	t_stack_node	*next_node;
-
-	if (!stack || !stack->next)
-		return (1);
-	current_node = stack;
-	while (current_node-> next)
-	{
-		next_node = current_node-> next;
-		if (current_node->nbr > next_node->nbr)
-			return (0);
-		current_node = current_node -> next;
-	}
-	return (1);
-}
-
-int	stack_size(t_stack_node *stack)
-{
-	t_stack_node	*current_node;
-	int				count;
-
-	if (!stack)
-		return (0);
-	current_node = stack;
-	count = 0;
-	while (current_node)
-	{
-		count++;
-		current_node = current_node->next;
-	}
-	return (count);
 }

@@ -7,7 +7,7 @@ LIBFT_DIR   = ./libft
 LIBFT       = $(LIBFT_DIR)/libft.a
 
 # Sorgenti di push_swap
-SRCS        = src/main.c src/parse_input.c src/parsing.c src/cheap.c src/gestione_lista.c src/push.c src/reverse_rotate.c src/rotate.c src/sort_many.c src/sorting.c src/swap.c
+SRCS        = src/main.c src/clean.c src/parsing.c src/cheap.c src/gestione_lista.c src/push.c src/reverse_rotate.c src/rotate.c src/sorting.c src/swap.c src/turk_a_to_b.c src/turk_b_to_a.c src/turk_utils.c
 OBJS        = $(SRCS:.c=.o)
 
 all: $(NAME)

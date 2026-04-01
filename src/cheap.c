@@ -6,7 +6,7 @@
 /*   By: amancheg <amancheg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 20:57:01 by amancheg          #+#    #+#             */
-/*   Updated: 2026/04/01 18:57:23 by amancheg         ###   ########.fr       */
+/*   Updated: 2026/04/01 22:50:30 by amancheg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	find_cheapest(t_stack_node *stack)
 {
 	t_stack_node	*cheapest_node;
-	long				lowest_cost;
+	long			lowest_cost;
 
 	if (!stack)
 		return ;
@@ -54,13 +54,14 @@ void	move_cheapest(t_stack_node **a, t_stack_node **b)
 			rrr(a, b);
 	}
 	finish_rotation(a, cheapest_node, 'a');
-	finish_rotation(b, cheapest_node, 'b');
+	finish_rotation(b, cheapest_node->target_node, 'b');
 	pb(b, a);
 }
 
 //funzione helper di move cheapest 
 //fa girare lo stack finche il nodo desiderato non arriva in cima
-void	finish_rotation(t_stack_node **stack, t_stack_node *top_node, char name)
+void	finish_rotation(t_stack_node **stack,
+			t_stack_node *top_node, char name)
 {
 	while (*stack != top_node)
 	{
