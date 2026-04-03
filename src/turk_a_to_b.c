@@ -6,7 +6,7 @@
 /*   By: amancheg <amancheg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 19:31:40 by amancheg          #+#    #+#             */
-/*   Updated: 2026/04/01 22:27:12 by amancheg         ###   ########.fr       */
+/*   Updated: 2026/04/02 19:45:17 by amancheg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,13 @@ void	init_target_a(t_stack_node *a, t_stack_node *b)
 	}
 }
 
+static int	get_node_cost(t_stack_node *node, int stack_len)
+{
+	if (node->above_median)
+		return (node->index);
+	return (stack_len - node->index);
+}
+
 void	calculate_cost(t_stack_node *a, t_stack_node *b)
 {
 	int	len_a;
@@ -72,22 +79,13 @@ void	calculate_cost(t_stack_node *a, t_stack_node *b)
 	len_b = stack_size(b);
 	while (a)
 	{
-		if (a->target_node == NULL)
-			return ;
-		if (a->above_median)
-			cost_a = a->index;
-		else
-			cost_a = len_a - a->index;
-		if (a->target_node->above_median)
-			cost_b = a->target_node->index;
-		else
-			cost_b = len_b - a->target_node->index;
+		cost_a = get_node_cost(a, len_a);
+		cost_b = get_node_cost(a->target_node, len_b);
 		if (a->above_median == a->target_node->above_median)
 		{
+			a->push_cost = cost_b;
 			if (cost_a > cost_b)
 				a->push_cost = cost_a;
-			else
-				a->push_cost = cost_b;
 		}
 		else
 			a->push_cost = cost_a + cost_b;

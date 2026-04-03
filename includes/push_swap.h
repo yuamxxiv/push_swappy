@@ -6,7 +6,7 @@
 /*   By: amancheg <amancheg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:52:06 by amancheg          #+#    #+#             */
-/*   Updated: 2026/04/01 22:50:02 by amancheg         ###   ########.fr       */
+/*   Updated: 2026/04/04 00:01:00 by amancheg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void			ra(t_stack_node **a);
 void			rb(t_stack_node **b);
 void			set_index(t_stack_node *stack);
 void			calculate_cost(t_stack_node *a, t_stack_node *b);
-void			find_target(t_stack_node *a, t_stack_node *b);
+void			find_target_b(t_stack_node *a, t_stack_node *b);
 t_stack_node	*get_min(t_stack_node *stack);
 void			move_back(t_stack_node **a, t_stack_node **b);
 void			bring_min_top(t_stack_node **a);

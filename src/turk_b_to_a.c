@@ -6,7 +6,7 @@
 /*   By: amancheg <amancheg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 19:35:14 by amancheg          #+#    #+#             */
-/*   Updated: 2026/04/01 22:51:40 by amancheg         ###   ########.fr       */
+/*   Updated: 2026/04/04 00:00:12 by amancheg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,27 @@
 
 //ora b e quasi finito quindi dobbiamo reinserire 
 //ogni nodo di b nel posto giusto in a 
-void	find_target(t_stack_node *a, t_stack_node *b)
+void	find_target_b(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_a;
-	t_stack_node	*target;
+	t_stack_node	*min_a;
+	long			match;
 
+	min_a = find_min(a);
 	while (b)
 	{
-		target = NULL;
+		match = LONG_MAX;
+		b->target_node = min_a;
 		current_a = a;
 		while (current_a)
 		{
-			if (current_a->nbr > b->nbr)
+			if (current_a->nbr > b->nbr && current_a->nbr < match)
 			{
-				if (!target || current_a->nbr < target->nbr)
-					target = current_a;
+				match = current_a->nbr;
+				b->target_node = current_a;
 			}
 			current_a = current_a->next;
 		}
-		if (!target)
-			b->target_node = find_min(a);
-		else
-			b->target_node = target;
 		b = b->next;
 	}
 }

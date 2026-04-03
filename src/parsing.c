@@ -6,7 +6,7 @@
 /*   By: amancheg <amancheg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 21:10:40 by amancheg          #+#    #+#             */
-/*   Updated: 2026/04/02 00:14:04 by amancheg         ###   ########.fr       */
+/*   Updated: 2026/04/02 18:21:38 by amancheg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,19 @@ void	parse_input(t_stack_node **stack_a, char **argv, int argc)
 	long long	n;
 	bool		error_atoi;
 
+	i = 0;
 	if (argc == 2)
 		args = ft_split(argv[1], ' ');
 	else
-		args = argv;
-	if (argc == 2)
-		i = 0;
-	else
-		i = 1;
-	while (args[i])
+		args = argv + 1;
+	while (args && args[i])
 	{
 		error_atoi = false;
 		if (!is_number(args[i]))
-			free_error(stack_a, args, (argc==2));
+			free_error(stack_a, args, (argc == 2));
 		n = ft_atol(args[i], &error_atoi);
 		if (error_atoi || is_duplicate(*stack_a, (int)n))
-			free_error (stack_a, args, is_single_arg);
+			free_error (stack_a, args, (argc == 2));
 		stack_add_back(stack_a, stack_new((n)));
 		i++;
 	}
